@@ -50,15 +50,6 @@
         </b-row>
       </b-col>
 
-      <b-col lg="6" xl="6" md="12" class="mb-30">
-        <b-card class="h-100">
-          <h4 class="card-title m-0">Last Month Profit</h4>
-          <div class="chart-wrapper" style="height: 300px ; width:100%">
-            <v-chart :options="echart4" :autoresize="true"></v-chart>
-          </div>
-        </b-card>
-      </b-col>
-
       <!-- last-month-salary -->
       <b-col lg="6" xl="6" md="12">
         <b-card title="Last Month Summary" body-class="pb-0" class="mb-30">
@@ -94,11 +85,6 @@
                   </tr>
                 </tbody>
               </table>
-            </b-col>
-            <b-col md="6">
-              <div class="chart-wrapper" style="height: 200px">
-                <v-chart :options="echart5" :autoresize="true"></v-chart>
-              </div>
             </b-col>
           </b-row>
         </b-card>
@@ -243,10 +229,7 @@
               <div class="card-input">
                 <legend class="col-form-label pt-0" for>Card Number</legend>
                 <div class="ul-widget-list__payment-method mb-1">
-                  <img
-                    class="mr-2"
-                    src="@/assets/images/master-card.png"
-                  />
+                  <img class="mr-2" src="@/assets/images/master-card.png" />
                   <img class="mr-2" src="@/assets/images/visa.png" />
                   <img class="mr-2" src="@/assets/images/paypal.png" />
                 </div>
@@ -257,44 +240,37 @@
                     <i class="i-Credit-Card-2 text-18"></i>
                   </span>
                 </b-input-group-prepend>
-                <b-input  placeholder="card number"></b-input>
+                <b-input placeholder="card number"></b-input>
               </b-input-group>
             </b-form-group>
 
             <b-row class="mt-4">
               <b-col md="4">
                 <b-form-group label="Expire">
-                 
                   <b-form-select
                     class
-                      v-model="selected" 
-                    :options=" [
-          { value: 'x', text: ' select an option' },
-          { value: 'a', text: 'January' },
-          { value: 'b', text: 'February' },
-      
- 
-        ]"
+                    v-model="selected"
+                    :options="[
+                      { value: 'x', text: ' select an option' },
+                      { value: 'a', text: 'January' },
+                      { value: 'b', text: 'February' }
+                    ]"
                     id="inline-form-custom-select-pref1"
                   >
-                    
                   </b-form-select>
                 </b-form-group>
               </b-col>
               <b-col md="4">
-                <b-form-group style="margin-top:25px">
+                <b-form-group style="margin-top: 25px">
                   <b-form-select
-                      v-model="selected"
+                    v-model="selected"
                     :options="[
-          { value: 'x', text: ' select an option' },
-          { value: 'a', text: 'January' },
-          { value: 'b', text: 'February' },
-          
- 
-        ]"
+                      { value: 'x', text: ' select an option' },
+                      { value: 'a', text: 'January' },
+                      { value: 'b', text: 'February' }
+                    ]"
                     id="inline-form-custom-select-pref"
                   >
-                    
                   </b-form-select>
                 </b-form-group>
               </b-col>
@@ -342,8 +318,6 @@
               <span class="">Traffic</span>
               <span class="text-muted">4 Hours ago</span>
             </div>
-
-            
           </div>
         </b-card>
       </b-col>
@@ -478,17 +452,16 @@
   </div>
 </template>
 <script>
-import { basicLine } from "@/data/echarts";
-import { echart4, echart5 } from "@/data/dashboard2";
+import { echart4, echart5 } from '@/data/dashboard2';
 
 export default {
   metaInfo: {
     // if no subcomponents specify a metaInfo.title, this title will be used
-    title: "Dashboard v2"
+    title: 'Dashboard v2'
   },
 
   data: () => ({
-    selected:"x",
+    selected: 'x',
     echart4,
     echart5,
     basicLine
@@ -496,9 +469,3 @@ export default {
   methods: {}
 };
 </script>
-<style>
-.echarts {
-  width: 100%;
-  height: 100%;
-}
-</style>

@@ -1,82 +1,75 @@
-import BootstrapVue from "bootstrap-vue";
+import BootstrapVue from 'bootstrap-vue';
 // import vuePerfectScrollbar from "vue-perfect-scrollbar";
-import VueTour from "vue-tour";
+import VueTour from 'vue-tour';
 // import SmartTable from "vuejs-smart-table";
-import VueTagsInput from "@johmun/vue-tags-input";
-import VueTheMask from "vue-the-mask";
-import Vuelidate from "vuelidate";
-import VueFormWizard from "vue-form-wizard";
-import VueLazyload from "vue-lazyload";
+import VueTagsInput from '@johmun/vue-tags-input';
+import VueTheMask from 'vue-the-mask';
+import Vuelidate from 'vuelidate';
+import VueFormWizard from 'vue-form-wizard';
+import VueLazyload from 'vue-lazyload';
 // import VCalendar from "v-calendar";
-import VueGoodTablePlugin from "vue-good-table";
 // import VueSlider from "vue-slider-component";
-import Meta from "vue-meta";
-import FlagIcon from "vue-flag-icon";
+import Meta from 'vue-meta';
+import FlagIcon from 'vue-flag-icon';
 
-import "@/assets/styles/sass/themes/lite-purple.scss";
-import "@/plugins/echarts";
-import "@/plugins/apexChart.js";
-import "@/plugins/sweetalert2.js";
-import DateRangePicker from "vue2-daterange-picker";
-import "vue2-daterange-picker/dist/vue2-daterange-picker.css";
-import "v2-datepicker/lib/index.css"; // v2 need to improt css
-import V2Datepicker from "v2-datepicker";
+import '@/assets/styles/sass/themes/lite-purple.scss';
+import '@/plugins/apexChart.js';
+import DateRangePicker from 'vue2-daterange-picker';
+import 'vue2-daterange-picker/dist/vue2-daterange-picker.css';
+// v2 need to improt css
+// import "v2-datepicker/lib/index.css";
 // javascript import for when you're importing the css directly in your javascript
-import "vue-navigation-bar/dist/vue-navigation-bar.css";
+import 'vue-navigation-bar/dist/vue-navigation-bar.css';
 
 // import the library
-import VueNavigationBar from "vue-navigation-bar";
-
+import VueNavigationBar from 'vue-navigation-bar';
 
 // locale.use(lang);
 
 export default {
   install(Vue) {
     Vue.use(BootstrapVue);
-    Vue.component("vue-navigation-bar", VueNavigationBar);
+    Vue.component('vue-navigation-bar', VueNavigationBar);
     Vue.component(
-      "large-sidebar",
+      'large-sidebar',
       // The `import` function returns a Promise.
-      () => import("../containers/layouts/largeSidebar")
+      () => import('../containers/layouts/largeSidebar')
     );
     Vue.component(
-      "horizontal-bar",
+      'horizontal-bar',
       // The `import` function returns a Promise.
-      () => import("../containers/layouts/horizontalBar")
+      () => import('../containers/layouts/horizontalBar')
     );
 
     Vue.component(
-      "compact-sidebar",
+      'compact-sidebar',
       // The `import` function returns a Promise.
-      () => import("../containers/layouts/compactSidebar")
+      () => import('../containers/layouts/compactSidebar')
     );
     Vue.component(
-      "vertical-sidebar",
+      'vertical-sidebar',
       // The `import` function returns a Promise.
-      () => import("../containers/layouts/verticalSidebar")
+      () => import('../containers/layouts/verticalSidebar')
     );
     Vue.component(
-      "vertical-sidebar-two",
+      'vertical-sidebar-two',
       // The `import` function returns a Promise.
-      () => import("../containers/layouts/verticalSidebarTwo")
+      () => import('../containers/layouts/verticalSidebarTwo')
     );
     Vue.component(
-      "customizer",
+      'customizer',
       // The `import` function returns a Promise.
-      () => import("../components/common/customizer.vue")
+      () => import('../components/common/customizer.vue')
     );
-    Vue.component("vue-perfect-scrollbar", () =>
-      import("vue-perfect-scrollbar")
-    );
+    Vue.component('vue-perfect-scrollbar', () => import('vue-perfect-scrollbar'));
     // Vue.component(VueCropper);
     Vue.use(Meta, {
-      keyName: "metaInfo",
-      attribute: "data-vue-meta",
-      ssrAttribute: "data-vue-meta-server-rendered",
-      tagIDKeyName: "vmid",
+      keyName: 'metaInfo',
+      attribute: 'data-vue-meta',
+      ssrAttribute: 'data-vue-meta-server-rendered',
+      tagIDKeyName: 'vmid',
       refreshOnceOnNavigation: true
     });
-    Vue.use(V2Datepicker);
     Vue.use(FlagIcon);
     // vueslider
     // Vue.component("VueSlider", () => import("vue-slider-component"));
@@ -98,8 +91,6 @@ export default {
 
     // import the styles
 
-    Vue.use(VueGoodTablePlugin);
-
     // import VueCropper from "./plugins/imageCropper";
 
     // Use v-calendar & v-date-picker components
@@ -113,7 +104,7 @@ export default {
       observer: true,
       // optional
       observerOptions: {
-        rootMargin: "0px",
+        rootMargin: '0px',
         threshold: 0.1
       }
     });

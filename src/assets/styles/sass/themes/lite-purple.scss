@@ -13,14 +13,14 @@ $teal: map-get($solid-colors, "teal") !default;
 $cyan: map-get($solid-colors, "cyan") !default;
 $primary-base: $purple;
 $white: #fff !default;
-$gray-100: #F3F4F6 !default;
-$gray-200: #E5E7EB !default;
-$gray-300: #D1D5DB !default;
-$gray-400: #9CA3AF !default;
-$gray-500: #6B7280 !default;
-$gray-600: #4B5563 !default;
+$gray-100: #f3f4f6 !default;
+$gray-200: #e5e7eb !default;
+$gray-300: #d1d5db !default;
+$gray-400: #9ca3af !default;
+$gray-500: #6b7280 !default;
+$gray-600: #4b5563 !default;
 $gray-700: #374151 !default;
-$gray-800: #1F2937 !default;
+$gray-800: #1f2937 !default;
 $gray-900: #111827 !default;
 $black: darken($primary-base, 60%) !default;
 $primary: $primary-base !default;
@@ -65,7 +65,7 @@ $colors: (
   cyan: $cyan,
   white: $white,
   gray: $gray-600,
-  gray-dark: $gray-800
+  gray-dark: $gray-800,
 ) !default;
 $theme-colors: (
   primary: $primary,
@@ -84,11 +84,11 @@ $theme-colors: (
   gray-700: $gray-700,
   gray-800: $gray-800,
   gray-900: $gray-900,
-  dark: $dark
+  dark: $dark,
 ) !default;
 @import "~bootstrap-vue/dist/bootstrap-vue.css";
 @import "~vue-form-wizard/dist/vue-form-wizard.min.css";
-@import "~vue-good-table/dist/vue-good-table.css";
+// @import "~vue-good-table/dist/vue-good-table.css";
 @import "~vue-slider-component/theme/default.css";
 @import "~nprogress/nprogress.css";
 @import "../../../fonts/iconsmind/iconsmind.css";

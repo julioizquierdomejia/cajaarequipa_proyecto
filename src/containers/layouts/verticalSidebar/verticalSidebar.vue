@@ -480,13 +480,6 @@
                   </b-collapse>
                 </li>
                 <!-- end nested  -->
-
-                <li>
-                  <router-link tag="a" to="/app/charts/eChart" class href="#">
-                    <i class="i-Line-Chart-2 mr-2"></i>
-                    <span class>EChart</span>
-                  </router-link>
-                </li>
               </ul>
             </b-collapse>
           </li>

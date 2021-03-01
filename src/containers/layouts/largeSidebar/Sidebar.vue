@@ -263,12 +263,6 @@
               <span class="item-name">Datepicker</span>
             </router-link>
           </li>
-          <li class="nav-item">
-            <router-link tag="a" class to="/app/forms/V2Datepicker">
-              <i class="nav-icon i-Calendar-4"></i>
-              <span class="item-name">V2Datepicker</span>
-            </router-link>
-          </li>
         </ul>
 
         <ul
@@ -697,12 +691,6 @@
           data-parent="charts"
           :class="{ 'd-block': selectedParentMenu == 'charts' }"
         >
-          <li class="nav-item">
-            <router-link tag="a" class to="/app/charts/eChart">
-              <i class="nav-icon i-Line-Chart-2"></i>
-              <span class="item-name">Echart</span>
-            </router-link>
-          </li>
           <li
             @click.prevent="toggleSidebarDropdwon($event)"
             class="nav-item dropdown-sidemenu"

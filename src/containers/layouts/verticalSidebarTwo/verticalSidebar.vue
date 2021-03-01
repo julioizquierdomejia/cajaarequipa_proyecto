@@ -1,18 +1,19 @@
 <template>
   <vue-perfect-scrollbar
     class="sidebar-panel rtl-ps-none ps scroll"
-    @mouseleave.native="sidebarCompact();returnSelectedParentMenu()"
+    @mouseleave.native="
+      sidebarCompact();
+      returnSelectedParentMenu();
+    "
     @mouseenter.native="removeSidebarCompact"
     :class="{
       'vertical-sidebar-compact': getVerticalCompact.isSidebarCompact,
       'sidebar-full-collapse': getVerticalSidebar.isMobileCompact
     }"
-    :settings="{ suppressScrollX : true ,  wheelPropagation: false}"
+    :settings="{ suppressScrollX: true, wheelPropagation: false }"
   >
     <div>
-      <div
-        class="gull-brand text-center d-flex align-items-center pl-2 mb-2 justify-content-between"
-      >
+      <div class="gull-brand text-center d-flex align-items-center pl-2 mb-2 justify-content-between">
         <div>
           <img class src="@/assets/images/logo.png" />
         </div>
@@ -35,18 +36,12 @@
             <div v-b-toggle.collapse-1>
               <a class="has-arrow" href="#" :class="{ active: selectedParentMenu == 'dashboards' }">
                 <i class="i-Bar-Chart text-17 mr-3"></i>
-                <span
-                  class="text-14"
-                  :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-                >Dashboards</span>
+                <span class="text-14" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">Dashboards</span>
                 <arrowIcon />
               </a>
             </div>
             <b-collapse id="collapse-1">
-              <ul
-                class="Ul_collapse"
-                :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-              >
+              <ul class="Ul_collapse" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">
                 <li>
                   <router-link tag="a" class to="/app/dashboards/dashboard.v1">
                     <span>Dashboard v1</span>
@@ -75,18 +70,12 @@
             <div v-b-toggle.collapse-2>
               <a class="has-arrow" href="#" :class="{ active: selectedParentMenu == 'ui-kits' }">
                 <i class="i-Library text-17 mr-3"></i>
-                <span
-                  class="text-14"
-                  :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-                >UI Kits</span>
+                <span class="text-14" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">UI Kits</span>
                 <arrowIcon />
               </a>
             </div>
             <b-collapse id="collapse-2">
-              <ul
-                class="Ul_collapse"
-                :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-              >
+              <ul class="Ul_collapse" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">
                 <li class="item-name">
                   <router-link tag="a" to="/app/ui-kits/alerts">
                     <span class>Alerts</span>
@@ -166,18 +155,12 @@
             <div v-b-toggle.collapse-3>
               <a class="has-arrow" href="#" :class="{ active: selectedParentMenu == 'extrakits' }">
                 <i class="i-Suitcase text-17 mr-3"></i>
-                <span
-                  class="text-14"
-                  :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-                >Extra Kits</span>
+                <span class="text-14" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">Extra Kits</span>
                 <arrowIcon />
               </a>
             </div>
             <b-collapse id="collapse-3">
-              <ul
-                class="Ul_collapse"
-                :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-              >
+              <ul class="Ul_collapse" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">
                 <li class="item-name">
                   <router-link tag="a" to="/app/extraKits/dropdown">
                     <span class>Dropdown</span>
@@ -215,18 +198,12 @@
             <div v-b-toggle.collapse-4>
               <a class="has-arrow" href="#" :class="{ active: selectedParentMenu == 'apps' }">
                 <i class="nav-icon i-Computer-Secure text-17 mr-3"></i>
-                <span
-                  class="text-14"
-                  :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-                >Apps</span>
+                <span class="text-14" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">Apps</span>
                 <arrowIcon />
               </a>
             </div>
             <b-collapse id="collapse-4">
-              <ul
-                class="Ul_collapse"
-                :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-              >
+              <ul class="Ul_collapse" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">
                 <!-- nested-route  -->
                 <li>
                   <div class v-b-toggle.collapse-4-1-inner>
@@ -234,9 +211,10 @@
                       <span
                         class
                         :class="{
-                        'vertical-item-name': getVerticalCompact.isItemName
-                      }"
-                      >Invoice</span>
+                          'vertical-item-name': getVerticalCompact.isItemName
+                        }"
+                        >Invoice</span
+                      >
                       <arrowIcon />
                     </a>
                   </div>
@@ -245,8 +223,8 @@
                     <ul
                       class="Ul_collapse"
                       :class="{
-                      'vertical-item-name': getVerticalCompact.isItemName
-                    }"
+                        'vertical-item-name': getVerticalCompact.isItemName
+                      }"
                     >
                       <li class="item-name">
                         <router-link tag="a" to="/app/apps/invoice" class href="#">
@@ -275,9 +253,10 @@
                       <span
                         class
                         :class="{
-                        'vertical-item-name': getVerticalCompact.isItemName
-                      }"
-                      >Contacts</span>
+                          'vertical-item-name': getVerticalCompact.isItemName
+                        }"
+                        >Contacts</span
+                      >
                       <arrowIcon />
                     </a>
                   </div>
@@ -286,8 +265,8 @@
                     <ul
                       class="Ul_collapse"
                       :class="{
-                      'vertical-item-name': getVerticalCompact.isItemName
-                    }"
+                        'vertical-item-name': getVerticalCompact.isItemName
+                      }"
                     >
                       <li class="item-name">
                         <router-link tag="a" to="/app/apps/contact-list" class href="#">
@@ -341,18 +320,12 @@
             <div v-b-toggle.collapse-5>
               <a class="has-arrow" href="#" :class="{ active: selectedParentMenu == 'charts' }">
                 <i class="nav-icon i-Pie-Chart-2 text-17 mr-3"></i>
-                <span
-                  class="text-14"
-                  :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-                >Charts</span>
+                <span class="text-14" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">Charts</span>
                 <arrowIcon />
               </a>
             </div>
             <b-collapse id="collapse-5">
-              <ul
-                class="Ul_collapse"
-                :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-              >
+              <ul class="Ul_collapse" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">
                 <!-- nested-route  -->
                 <li>
                   <div class v-b-toggle.collapse-5-1-inner>
@@ -360,9 +333,10 @@
                       <span
                         class
                         :class="{
-                        'vertical-item-name': getVerticalCompact.isItemName
-                      }"
-                      >Apex Charts</span>
+                          'vertical-item-name': getVerticalCompact.isItemName
+                        }"
+                        >Apex Charts</span
+                      >
                       <arrowIcon />
                     </a>
                   </div>
@@ -371,8 +345,8 @@
                     <ul
                       class="Ul_collapse"
                       :class="{
-                      'vertical-item-name': getVerticalCompact.isItemName
-                    }"
+                        'vertical-item-name': getVerticalCompact.isItemName
+                      }"
                     >
                       <li class="item-name">
                         <router-link tag="a" to="/app/charts/apexAreaChart" class href="#">
@@ -433,12 +407,6 @@
                   </b-collapse>
                 </li>
                 <!-- end nested  -->
-
-                <li>
-                  <router-link tag="a" to="/app/charts/eChart" class href="#">
-                    <span class>EChart</span>
-                  </router-link>
-                </li>
               </ul>
             </b-collapse>
           </li>
@@ -447,18 +415,12 @@
             <div v-b-toggle.collapse-6>
               <a class="has-arrow" href="#" :class="{ active: selectedParentMenu == 'widgets' }">
                 <i class="nav-icon i-Windows-2 text-17 mr-3"></i>
-                <span
-                  class="text-14"
-                  :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-                >Widgets</span>
+                <span class="text-14" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">Widgets</span>
                 <arrowIcon />
               </a>
             </div>
             <b-collapse id="collapse-6">
-              <ul
-                class="Ul_collapse"
-                :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-              >
+              <ul class="Ul_collapse" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">
                 <li class="item-name">
                   <router-link tag="a" to="/app/widgets/widgetCard" class href="#">
                     <span class>Widget Card</span>
@@ -492,19 +454,13 @@
             <div v-b-toggle.collapse-7>
               <a class="has-arrow" href="#" :class="{ active: selectedParentMenu == 'forms' }">
                 <i class="nav-icon i-File-Clipboard-File--Text text-17 mr-3"></i>
-                <span
-                  class="text-14"
-                  :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-                >Forms</span>
+                <span class="text-14" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">Forms</span>
 
                 <arrowIcon />
               </a>
             </div>
             <b-collapse id="collapse-7">
-              <ul
-                class="Ul_collapse"
-                :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-              >
+              <ul class="Ul_collapse" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">
                 <li class="item-name">
                   <router-link tag="a" to="/app/forms/basicForms" class>
                     <span class>Basic Elements</span>
@@ -547,18 +503,12 @@
             <div v-b-toggle.collapse-8>
               <a class="has-arrow" href="#" :class="{ active: selectedParentMenu == 'datatables' }">
                 <i class="nav-icon i-File-Horizontal-Text text-17 mr-3"></i>
-                <span
-                  class="text-14"
-                  :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-                >Datatables</span>
+                <span class="text-14" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">Datatables</span>
                 <arrowIcon />
               </a>
             </div>
             <b-collapse id="collapse-8">
-              <ul
-                class="Ul_collapse"
-                :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-              >
+              <ul class="Ul_collapse" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">
                 <li class="item-name">
                   <router-link tag="a" to="/app/datatables/paging" class href="#">
                     <span class>Paging</span>
@@ -586,18 +536,12 @@
             <div v-b-toggle.collapse-9>
               <a class="has-arrow" href="#">
                 <i class="nav-icon i-Administrator text-17 mr-3"></i>
-                <span
-                  class="text-14"
-                  :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-                >Sessions</span>
+                <span class="text-14" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">Sessions</span>
                 <arrowIcon />
               </a>
             </div>
             <b-collapse id="collapse-9">
-              <ul
-                class="Ul_collapse"
-                :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-              >
+              <ul class="Ul_collapse" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">
                 <li class="item-name">
                   <router-link tag="a" to="/app/sessions/signIn" class href="#">
                     <span class>Sign In</span>
@@ -620,18 +564,12 @@
             <div v-b-toggle.collapse-10>
               <a class="has-arrow" href="#" :class="{ active: selectedParentMenu == 'pages' }">
                 <i class="nav-icon i-Double-Tap text-17 mr-3"></i>
-                <span
-                  class="text-14"
-                  :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-                >Pages</span>
+                <span class="text-14" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">Pages</span>
                 <arrowIcon />
               </a>
             </div>
             <b-collapse id="collapse-10">
-              <ul
-                class="Ul_collapse"
-                :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-              >
+              <ul class="Ul_collapse" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">
                 <li class="item-name">
                   <router-link tag="a" to="/app/pages/error" class href="#">
                     <span class>Not Found</span>
@@ -681,10 +619,7 @@
           <li class="Ul_li--hover">
             <a class="has-arrow" href="http://demos.ui-lib.com/gull-vue-doc/">
               <i class="nav-icon i-Safe-Box1 text-17 mr-3"></i>
-              <span
-                class="text-14"
-                :class="{ 'vertical-item-name': getVerticalCompact.isItemName }"
-              >Doc</span>
+              <span class="text-14" :class="{ 'vertical-item-name': getVerticalCompact.isItemName }">Doc</span>
             </a>
           </li>
         </ul>
@@ -693,51 +628,44 @@
   </vue-perfect-scrollbar>
 </template>
 <script>
-import { mapGetters, mapActions } from "vuex";
-import arrowIcon from "@/components/arrow/arrowIcon";
+import { mapGetters, mapActions } from 'vuex';
+import arrowIcon from '@/components/arrow/arrowIcon';
 export default {
   components: {
-    arrowIcon,
+    arrowIcon
   },
   computed: {
-    ...mapGetters(["getVerticalCompact", "getVerticalSidebar"]),
+    ...mapGetters(['getVerticalCompact', 'getVerticalSidebar'])
   },
   data() {
     return {
-      selectedParentMenu: "",
+      selectedParentMenu: ''
     };
   },
   mounted() {
     this.toggleSelectedParentMenu();
-    document.addEventListener("click", this.returnSelectedParentMenu);
+    document.addEventListener('click', this.returnSelectedParentMenu);
   },
   beforeDestroy() {
-    document.removeEventListener("click", this.returnSelectedParentMenu);
+    document.removeEventListener('click', this.returnSelectedParentMenu);
   },
   methods: {
-    ...mapActions([
-      "switchSidebar",
-      "sidebarCompact",
-      "removeSidebarCompact",
-      "mobileSidebar",
-    ]),
+    ...mapActions(['switchSidebar', 'sidebarCompact', 'removeSidebarCompact', 'mobileSidebar']),
 
     toggleSelectedParentMenu() {
-      const currentParentUrl = this.$route.path
-        .split("/")
-        .filter((x) => x !== "")[1];
+      const currentParentUrl = this.$route.path.split('/').filter((x) => x !== '')[1];
 
       if (currentParentUrl !== undefined || currentParentUrl !== null) {
         this.selectedParentMenu = currentParentUrl.toLowerCase();
         console.log(currentParentUrl);
       } else {
-        this.selectedParentMenu = "dashboards";
+        this.selectedParentMenu = 'dashboards';
       }
     },
     returnSelectedParentMenu() {
       this.toggleSelectedParentMenu();
-    },
-  },
+    }
+  }
 };
 </script>
 <style>

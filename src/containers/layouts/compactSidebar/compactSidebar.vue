@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="side-content-wrap"
-    @mouseenter="isMenuOver = true"
-    @mouseleave="isMenuOver = false"
-    @touchstart="isMenuOver = true"
-  >
+  <div class="side-content-wrap" @mouseenter="isMenuOver = true" @mouseleave="isMenuOver = false" @touchstart="isMenuOver = true">
     <vue-perfect-scrollbar
       :settings="{ suppressScrollX: true, wheelPropagation: false }"
       :class="{ open: getCompactSideBarToggleProperties.isSideNavOpen }"
@@ -55,26 +50,14 @@
           </a>
           <div class="triangle"></div>
         </li>
-        <li
-          @mouseenter="toggleSubMenu"
-          class="nav-item"
-          :class="{ active: selectedParentMenu == 'apps' }"
-          data-item="apps"
-          :data-submenu="true"
-        >
+        <li @mouseenter="toggleSubMenu" class="nav-item" :class="{ active: selectedParentMenu == 'apps' }" data-item="apps" :data-submenu="true">
           <a class="nav-item-hold" href="#">
             <i class="nav-icon i-Computer-Secure"></i>
             <span class="nav-text">Apps</span>
           </a>
           <div class="triangle"></div>
         </li>
-        <li
-          @mouseenter="toggleSubMenu"
-          class="nav-item"
-          :class="{ active: selectedParentMenu == 'charts' }"
-          data-item="charts"
-          :data-submenu="true"
-        >
+        <li @mouseenter="toggleSubMenu" class="nav-item" :class="{ active: selectedParentMenu == 'charts' }" data-item="charts" :data-submenu="true">
           <a class="nav-item-hold" href="#">
             <i class="nav-icon i-Pie-Chart-2"></i>
             <span class="nav-text">Charts</span>
@@ -94,13 +77,7 @@
           </a>
           <div class="triangle"></div>
         </li>
-        <li
-          @mouseenter="toggleSubMenu"
-          class="nav-item"
-          :class="{ active: selectedParentMenu == 'forms' }"
-          data-item="forms"
-          :data-submenu="true"
-        >
+        <li @mouseenter="toggleSubMenu" class="nav-item" :class="{ active: selectedParentMenu == 'forms' }" data-item="forms" :data-submenu="true">
           <a class="nav-item-hold" href="#">
             <i class="nav-icon i-File-Clipboard-File--Text"></i>
             <span class="nav-text">Forms</span>
@@ -133,30 +110,15 @@
           </a>
           <div class="triangle"></div>
         </li>
-        <li
-          @mouseenter="toggleSubMenu"
-          :class="{ active: selectedParentMenu == 'pages' }"
-          class="nav-item"
-          data-item="pages"
-          :data-submenu="true"
-        >
+        <li @mouseenter="toggleSubMenu" :class="{ active: selectedParentMenu == 'pages' }" class="nav-item" data-item="pages" :data-submenu="true">
           <a class="nav-item-hold" href="#">
             <i class="nav-icon i-Double-Tap"></i>
             <span class="nav-text">Pages</span>
           </a>
           <div class="triangle"></div>
         </li>
-        <li
-          class="nav-item"
-          :data-submenu="false"
-          @mouseenter="toggleSubMenu"
-          :class="{ active: selectedParentMenu == 'doc' }"
-        >
-          <a
-            class="nav-item-hold"
-            href="http://demos.ui-lib.com/gull-vue-doc/"
-            target="_blank"
-          >
+        <li class="nav-item" :data-submenu="false" @mouseenter="toggleSubMenu" :class="{ active: selectedParentMenu == 'doc' }">
+          <a class="nav-item-hold" href="http://demos.ui-lib.com/gull-vue-doc/" target="_blank">
             <i class="nav-icon i-Safe-Box1"></i>
             <span class="nav-text">Doc</span>
           </a>
@@ -179,11 +141,7 @@
         </header>
 
         <!-- submenu-dashboards -->
-        <div
-          class="submenu-area"
-          data-parent="dashboards"
-          :class="{ 'd-block': selectedParentMenu == 'dashboards' }"
-        >
+        <div class="submenu-area" data-parent="dashboards" :class="{ 'd-block': selectedParentMenu == 'dashboards' }">
           <header>
             <h6>Dashboards</h6>
             <p>Lorem ipsum dolor sit.</p>
@@ -216,11 +174,7 @@
           </ul>
         </div>
         <!-- end dashboards -->
-        <div
-          class="submenu-area"
-          data-parent="ui-kits"
-          :class="{ 'd-block': selectedParentMenu == 'ui-kits' }"
-        >
+        <div class="submenu-area" data-parent="ui-kits" :class="{ 'd-block': selectedParentMenu == 'ui-kits' }">
           <header>
             <h6>UI Kits</h6>
             <p>Lorem ipsum dolor sit.</p>
@@ -319,11 +273,7 @@
         </div>
         <!-- end ui-kits -->
 
-        <div
-          class="submenu-area"
-          data-parent="extrakits"
-          :class="{ 'd-block': selectedParentMenu == 'extrakits' }"
-        >
+        <div class="submenu-area" data-parent="extrakits" :class="{ 'd-block': selectedParentMenu == 'extrakits' }">
           <header>
             <h6>Extra Kits</h6>
             <p>Lorem ipsum dolor sit.</p>
@@ -388,20 +338,13 @@
           </ul>
         </div>
         <!-- end of extra kits -->
-        <div
-          class="submenu-area"
-          data-parent="apps"
-          :class="{ 'd-block': selectedParentMenu == 'apps' }"
-        >
+        <div class="submenu-area" data-parent="apps" :class="{ 'd-block': selectedParentMenu == 'apps' }">
           <header>
             <h6>Apps</h6>
             <p>Lorem ipsum dolor sit.</p>
           </header>
           <ul class="childNav" data-parent="apps">
-            <li
-              @click.prevent="toggleSidebarDropdwon($event)"
-              class="nav-item dropdown-sidemenu"
-            >
+            <li @click.prevent="toggleSidebarDropdwon($event)" class="nav-item dropdown-sidemenu">
               <a href="#">
                 <i class="nav-icon i-File"></i>
                 <span class="item-name">Invoice</span>
@@ -429,17 +372,10 @@
               </ul>
             </li>
             <!-- contact app -->
-            <li
-              @click.prevent="toggleSidebarDropdwon($event)"
-              class="nav-item dropdown-sidemenu"
-            >
+            <li @click.prevent="toggleSidebarDropdwon($event)" class="nav-item dropdown-sidemenu">
               <a href="#">
                 <i class="nav-icon i-File-CSV"></i>
-                <span class="item-name"
-                  >Contacts<span class=" ml-2 badge badge-pill badge-danger"
-                    >New</span
-                  ></span
-                >
+                <span class="item-name">Contacts<span class="ml-2 badge badge-pill badge-danger">New</span></span>
                 <i class="dd-arrow i-Arrow-Down"></i>
               </a>
               <ul class="submenu">
@@ -511,26 +447,13 @@
           </ul>
         </div>
         <!-- end of apps -->
-        <div
-          class="submenu-area"
-          data-parent="charts"
-          :class="{ 'd-block': selectedParentMenu == 'charts' }"
-        >
+        <div class="submenu-area" data-parent="charts" :class="{ 'd-block': selectedParentMenu == 'charts' }">
           <header>
             <h6>Charts</h6>
             <p>Lorem ipsum dolor sit.</p>
           </header>
           <ul class="childNav" data-parent="charts">
-            <li class="nav-item">
-              <router-link tag="a" class to="/app/charts/eChart">
-                <i class="nav-icon i-Line-Chart-2"></i>
-                <span class="item-name">Echart</span>
-              </router-link>
-            </li>
-            <li
-              @click.prevent="toggleSidebarDropdwon($event)"
-              class="nav-item dropdown-sidemenu"
-            >
+            <li @click.prevent="toggleSidebarDropdwon($event)" class="nav-item dropdown-sidemenu">
               <a href="#">
                 <i class="nav-icon i-Line-Chart"></i>
                 <span class="item-name">Apex Charts</span>
@@ -569,11 +492,7 @@
                   </router-link>
                 </li>
                 <li>
-                  <router-link
-                    tag="a"
-                    class
-                    to="/app/charts/apexPieDonutsChart"
-                  >
+                  <router-link tag="a" class to="/app/charts/apexPieDonutsChart">
                     <i class="nav-icon i-Line-Chart-2"></i>
                     <span class="item-name">Pie Donut Chart</span>
                   </router-link>
@@ -585,11 +504,7 @@
                   </router-link>
                 </li>
                 <li>
-                  <router-link
-                    tag="a"
-                    class
-                    to="/app/charts/apexRadialBarChart"
-                  >
+                  <router-link tag="a" class to="/app/charts/apexRadialBarChart">
                     <i class="nav-icon i-Line-Chart-2"></i>
                     <span class="item-name">Radial Bar Chart</span>
                   </router-link>
@@ -602,11 +517,7 @@
                 </li>
 
                 <li>
-                  <router-link
-                    tag="a"
-                    class
-                    to="/app/charts/apexSparklineChart"
-                  >
+                  <router-link tag="a" class to="/app/charts/apexSparklineChart">
                     <i class="nav-icon i-Line-Chart-2"></i>
                     <span class="item-name">Sparkline Chart</span>
                   </router-link>
@@ -621,11 +532,7 @@
         </div>
         <!-- end of charts -->
 
-        <div
-          class="submenu-area"
-          data-parent="widgets"
-          :class="{ 'd-block': selectedParentMenu == 'widgets' }"
-        >
+        <div class="submenu-area" data-parent="widgets" :class="{ 'd-block': selectedParentMenu == 'widgets' }">
           <header>
             <h6>Widgets</h6>
             <p>Lorem ipsum dolor sit.</p>
@@ -666,11 +573,7 @@
         </div>
         <!-- end of widgets -->
 
-        <div
-          class="submenu-area"
-          data-parent="forms"
-          :class="{ 'd-block': selectedParentMenu == 'forms' }"
-        >
+        <div class="submenu-area" data-parent="forms" :class="{ 'd-block': selectedParentMenu == 'forms' }">
           <header>
             <h6>Forms</h6>
             <p>Lorem ipsum dolor sit.</p>
@@ -722,11 +625,7 @@
         </div>
         <!-- end of forms -->
 
-        <div
-          class="submenu-area"
-          data-parent="datatables"
-          :class="{ 'd-block': selectedParentMenu == 'datatables' }"
-        >
+        <div class="submenu-area" data-parent="datatables" :class="{ 'd-block': selectedParentMenu == 'datatables' }">
           <header>
             <h6>Datatables</h6>
             <p>Lorem ipsum dolor sit.</p>
@@ -760,11 +659,7 @@
         </div>
         <!-- end of datatables -->
 
-        <div
-          class="submenu-area"
-          data-parent="sessions"
-          :class="{ 'd-block': selectedParentMenu == 'sessions' }"
-        >
+        <div class="submenu-area" data-parent="sessions" :class="{ 'd-block': selectedParentMenu == 'sessions' }">
           <header>
             <h6>Sessions</h6>
             <p>Lorem ipsum dolor sit.</p>
@@ -792,11 +687,7 @@
         </div>
         <!-- end of sessions -->
 
-        <div
-          class="submenu-area"
-          data-parent="pages"
-          :class="{ 'd-block': selectedParentMenu == 'pages' }"
-        >
+        <div class="submenu-area" data-parent="pages" :class="{ 'd-block': selectedParentMenu == 'pages' }">
           <header>
             <h6>Pages</h6>
             <p>Lorem ipsum dolor sit.</p>
@@ -830,42 +721,41 @@
       @click="removeOverlay()"
       class="sidebar-overlay"
       :class="{
-        open:
-          getCompactSideBarToggleProperties.isSideNavOpen && windowWidth <= 1200
+        open: getCompactSideBarToggleProperties.isSideNavOpen && windowWidth <= 1200
       }"
     ></div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-import { isMobile } from "mobile-device-detect";
+import { mapGetters, mapActions } from 'vuex';
+import { isMobile } from 'mobile-device-detect';
 export default {
   data() {
     return {
       isMenuOver: false,
-      selectedParentMenu: "",
+      selectedParentMenu: '',
       isMobile,
       windowWidth: window.innerWidth
     };
   },
   mounted() {
     this.toggleSelectedParentMenu();
-    window.addEventListener("resize", this.handleWindowResize);
-    document.addEventListener("click", this.returnSelectedParentMenu);
+    window.addEventListener('resize', this.handleWindowResize);
+    document.addEventListener('click', this.returnSelectedParentMenu);
     this.handleWindowResize();
   },
 
   beforeDestroy() {
-    document.removeEventListener("click", this.returnSelectedParentMenu);
-    window.removeEventListener("resize", this.handleWindowResize);
+    document.removeEventListener('click', this.returnSelectedParentMenu);
+    window.removeEventListener('resize', this.handleWindowResize);
   },
   computed: {
-    ...mapGetters(["getCompactSideBarToggleProperties"])
+    ...mapGetters(['getCompactSideBarToggleProperties'])
   },
 
   methods: {
-    ...mapActions(["changeCompactSidebarProperties"]),
+    ...mapActions(['changeCompactSidebarProperties']),
 
     removeOverlay() {
       this.changeCompactSidebarProperties();
@@ -895,14 +785,12 @@ export default {
       }
     },
     toggleSelectedParentMenu() {
-      const currentParentUrl = this.$route.path
-        .split("/")
-        .filter(x => x !== "")[1];
+      const currentParentUrl = this.$route.path.split('/').filter((x) => x !== '')[1];
 
       if (currentParentUrl !== undefined || currentParentUrl !== null) {
         this.selectedParentMenu = currentParentUrl.toLowerCase();
       } else {
-        this.selectedParentMenu = "dashboards";
+        this.selectedParentMenu = 'dashboards';
       }
     },
     toggleSubMenu(e) {
@@ -922,12 +810,12 @@ export default {
     },
 
     toggleSidebarDropdwon(event) {
-      let dropdownMenus = this.$el.querySelectorAll(".dropdown-sidemenu.open");
+      let dropdownMenus = this.$el.querySelectorAll('.dropdown-sidemenu.open');
 
-      event.currentTarget.classList.toggle("open");
+      event.currentTarget.classList.toggle('open');
 
-      dropdownMenus.forEach(dropdown => {
-        dropdown.classList.remove("open");
+      dropdownMenus.forEach((dropdown) => {
+        dropdown.classList.remove('open');
       });
     }
   }
