@@ -1,5 +1,5 @@
-@import "vars";
-@import "header";
+@import 'vars';
+@import 'header';
 .app-admin-wrap {
   width: 100%;
 }
@@ -25,8 +25,7 @@
     top: $topbar-height;
     height: calc(100vh - #{$topbar-height});
     background: $background;
-    box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.06),
-      0 1px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.08);
   }
   .sidebar-left {
     left: calc(-#{$sidebar-left-width} - #{$side-clearance});
@@ -206,9 +205,7 @@
   .sidebar-overlay {
     display: none;
     position: fixed;
-    width: calc(
-      100% - #{$sidebar-left-width} - #{$sidebar-left-secondary-width}
-    );
+    width: calc(100% - #{$sidebar-left-width} - #{$sidebar-left-secondary-width});
     height: calc(100vh - #{$topbar-height});
     bottom: 0;
     right: 0;
@@ -288,7 +285,7 @@
   }
 }
 
-[dir="rtl"] {
+[dir='rtl'] {
   .layout-sidebar-large {
     .sidebar-left {
       left: auto !important;

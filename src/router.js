@@ -14,34 +14,13 @@ const routes = [
     path: '/',
     component: () => import('./views/app'), //webpackChunkName app
     beforeEnter: authenticate,
-    redirect: '/app/dashboards/dashboard.v1',
+    redirect: '/app/dashboard',
 
     children: [
       {
-        path: '/app/dashboards',
-        component: () => import('./views/app/dashboards'), //dashboard
-        children: [
-          {
-            path: 'dashboard.v1',
-            name: 'dashboard.v1',
-            component: () => import('./views/app/dashboards/dashboard.v1')
-          },
-          {
-            path: 'dashboard.v2',
-            name: 'dashboard.v2',
-            component: () => import('./views/app/dashboards/dashboard.v2')
-          },
-          {
-            path: 'dashboard.v3',
-            name: 'dashboard.v3',
-            component: () => import('./views/app/dashboards/dashboard.v3')
-          },
-          {
-            path: 'dashboard.v4',
-            name: 'dashboard.v4',
-            component: () => import('./views/app/dashboards/dashboard.v4')
-          }
-        ]
+        path: '/app/dashboard',
+        component: () => import('./views/app/dashboard'), //dashboard
+        name: 'dashboard'
       },
 
       //ui-kits

@@ -54,8 +54,8 @@
     .logo {
       width: $sidebar-left-width;
       img {
-        width: 60px;
-        height: 60px;
+        width: 90px;
+        height: unset;
         margin: 0 auto;
         display: block;
       }
@@ -121,8 +121,8 @@
         }
       }
     }
-    button.dropdown-toggle {
-      padding: 0px !important;
+    .icon.dropdown-toggle {
+      padding: 0px;
     }
   }
 }

@@ -1,16 +1,15 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import axios from 'axios';
+axios.defaults.baseURL = 'https://gohan-upjhfp6ytq-ue.a.run.app';
 
 export default {
   state: {
-    loggedInUser: localStorage.getItem('userInfo') != null ? JSON.parse(localStorage.getItem('userInfo')) : null,
-    loading: false,
-    error: null
+    userToken: localStorage.getItem('userToken') != null ? localStorage.getItem('userToken') : null,
+    loggedInUser: null,
+    loading: false
   },
   getters: {
     loggedInUser: state => state.loggedInUser,
-    loading: state => state.loading,
-    error: state => state.error
+    loading: state => state.loading
   },
   mutations: {
     setUser(state, data) {
@@ -22,79 +21,60 @@ export default {
       state.loggedInUser = null;
       state.loading = false;
       state.error = null;
-      // this.$router.go("/");
     },
     setLoading(state, data) {
       state.loading = data;
       state.error = null;
-    },
-    setError(state, data) {
-      state.error = data;
-      state.loggedInUser = null;
-      state.loading = false;
-    },
-    clearError(state) {
-      state.error = null;
     }
   },
   actions: {
-    login({ commit }, data) {
-      commit('clearError');
-      commit('setLoading', true);
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(data.email, data.password)
-        .then(user => {
-          const newUser = { uid: user.user.uid };
-          localStorage.setItem('userInfo', JSON.stringify(newUser));
-          commit('setUser', { uid: user.user.uid });
-          console.log('user');
-        })
-        .catch(function(error) {
-          // Handle Errors here.
-          // var errorCode = error.code;
-          // var errorMessage = error.message;
-          // console.log(error);
-          localStorage.removeItem('userInfo');
-          commit('setError', error);
-          // ...
-        });
+    async login({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        commit('setLoading', true);
+
+        axios
+          .post('/api/login', data)
+          .then(res => {
+            const token = res.data.result.token;
+            localStorage.setItem('userToken', token);
+            resolve(res);
+          })
+          .catch(error => {
+            const errorData = error.response;
+            reject(errorData);
+          })
+          .finally(() => {
+            commit('setLoading', false);
+          });
+      });
     },
 
-    signUserUp({ commit }, data) {
-      commit('setLoading', true);
-      commit('clearError');
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(data.email, data.password)
-        .then(user => {
-          commit('setLoading', false);
+    async signUserUp({ commit }, data) {
+      return new Promise((resolve, reject) => {
+        commit('setLoading', true);
 
-          const newUser = {
-            uid: user.user.uid
-          };
-          console.log(newUser);
-          localStorage.setItem('userInfo', JSON.stringify(newUser));
-          commit('setUser', newUser);
-        })
-        .catch(error => {
-          commit('setLoading', false);
-          commit('setError', error);
-          localStorage.removeItem('userInfo');
-          console.log(error);
-        });
+        axios
+          .post('/api/register', data)
+          .then(res => {
+            const newUser = res.data.result.user;
+            commit('setUser', newUser);
+
+            const token = res.data.result.token;
+            localStorage.setItem('userToken', token);
+
+            resolve(res);
+          })
+          .catch(error => {
+            const errorData = error.response;
+            reject(errorData);
+          })
+          .finally(() => {
+            commit('setLoading', false);
+          });
+      });
     },
     signOut({ commit }) {
-      firebase
-        .auth()
-        .signOut()
-        .then(
-          () => {
-            localStorage.removeItem('userInfo');
-            commit('setLogout');
-          },
-          _error => {}
-        );
+      commit('setLogout');
     }
   }
 };

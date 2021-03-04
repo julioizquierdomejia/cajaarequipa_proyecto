@@ -5,40 +5,37 @@
     <sidebar />
 
     <main>
-      <div
-        :class="{ 'sidenav-open': getSideBarToggleProperties.isSideNavOpen }"
-        class="main-content-wrap d-flex flex-column flex-grow-1 print-area"
-      >
+      <div :class="{ 'sidenav-open': getSideBarToggleProperties.isSideNavOpen }" class="main-content-wrap d-flex flex-column flex-grow-1 print-area">
         <transition name="page" mode="out-in">
           <router-view />
         </transition>
 
         <div class="flex-grow-1"></div>
-        <appFooter />
+        <!-- <appFooter /> -->
       </div>
     </main>
   </div>
 </template>
 
 <script>
-import Sidebar from "./Sidebar";
-import TopNav from "./TopNav";
-import appFooter from "../common/footer";
-import { mapGetters, mapActions } from "vuex";
+import Sidebar from './Sidebar';
+import TopNav from './TopNav';
+import appFooter from '../common/footer';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   components: {
     Sidebar,
     TopNav,
-    appFooter,
+    appFooter
   },
   data() {
     return {};
   },
   computed: {
-    ...mapGetters(["getSideBarToggleProperties"]),
+    ...mapGetters(['getSideBarToggleProperties'])
   },
-  methods: {},
+  methods: {}
 };
 </script>
 <style>

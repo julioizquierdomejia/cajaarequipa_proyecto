@@ -1,17 +1,18 @@
-@import "../variables";
-@import "colors";
+@import '../variables';
+@import 'colors';
 
-$blue: map-get($solid-colors, "blue") !default;
-$indigo: map-get($solid-colors, "indigo") !default;
-$purple: map-get($solid-colors, "purple") !default;
-$pink: map-get($solid-colors, "pink") !default;
-$red: map-get($solid-colors, "red") !default;
-$orange: map-get($solid-colors, "orange") !default;
-$yellow: map-get($solid-colors, "yellow") !default;
-$green: map-get($solid-colors, "green") !default;
-$teal: map-get($solid-colors, "teal") !default;
-$cyan: map-get($solid-colors, "cyan") !default;
-$primary-base: $purple;
+$blue: map-get($solid-colors, 'blue') !default;
+$indigo: map-get($solid-colors, 'indigo') !default;
+$purple: map-get($solid-colors, 'purple') !default;
+$pink: map-get($solid-colors, 'pink') !default;
+$red: map-get($solid-colors, 'red') !default;
+$orange: map-get($solid-colors, 'orange') !default;
+$yellow: map-get($solid-colors, 'yellow') !default;
+$green: map-get($solid-colors, 'green') !default;
+$teal: map-get($solid-colors, 'teal') !default;
+$cyan: map-get($solid-colors, 'cyan') !default;
+$sapphire: map-get($solid-colors, 'sapphire') !default;
+$primary-base: $sapphire;
 $white: #fff !default;
 $gray-100: #f3f4f6 !default;
 $gray-200: #e5e7eb !default;
@@ -65,7 +66,7 @@ $colors: (
   cyan: $cyan,
   white: $white,
   gray: $gray-600,
-  gray-dark: $gray-800,
+  gray-dark: $gray-800
 ) !default;
 $theme-colors: (
   primary: $primary,
@@ -84,17 +85,17 @@ $theme-colors: (
   gray-700: $gray-700,
   gray-800: $gray-800,
   gray-900: $gray-900,
-  dark: $dark,
+  dark: $dark
 ) !default;
-@import "~bootstrap-vue/dist/bootstrap-vue.css";
-@import "~vue-form-wizard/dist/vue-form-wizard.min.css";
+@import '~bootstrap-vue/dist/bootstrap-vue.css';
+@import '~vue-form-wizard/dist/vue-form-wizard.min.css';
 // @import "~vue-good-table/dist/vue-good-table.css";
-@import "~vue-slider-component/theme/default.css";
-@import "~nprogress/nprogress.css";
-@import "../../../fonts/iconsmind/iconsmind.css";
-@import "../../vendor/bootstrap/bootstrap.scss";
+@import '~vue-slider-component/theme/default.css';
+@import '~nprogress/nprogress.css';
+@import '../../../fonts/iconsmind/iconsmind.css';
+@import '../../vendor/bootstrap/bootstrap.scss';
 // @import "~bootstrap/scss/bootstrap.scss";
-@import "../bootstrap-rtl.scss";
+@import '../bootstrap-rtl.scss';
 
-@import "../globals/globals.scss";
-@import "dark/dark";
+@import '../globals/globals.scss';
+@import 'dark/dark';
