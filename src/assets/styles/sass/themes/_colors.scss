@@ -13,7 +13,8 @@ $solid-colors: (
   'cyan': #06b6d4,
   'gray': #71717a,
   'slate-gray': #64748b,
-  'sapphire': #0d2b68
+  'sapphire': #0d2b68,
+  'sky-blue': #00aff3
 );
 
 // Gradient colors
@@ -34,4 +35,8 @@ $gradient-colors: (
     'start-color': #616d86,
     'end-color': #1f1c2c
   )
+);
+
+$theme-colors: (
+  'sky-blue': map-get($solid-colors, 'sky-blue')
 );

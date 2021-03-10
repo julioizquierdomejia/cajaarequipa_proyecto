@@ -14,7 +14,7 @@
     padding: 2rem 2rem 0;
     position: relative;
     min-height: calc(100vh - #{$topbar-height});
-    background: $white;
+    background: #f7f7f7;
     &.sidenav-open {
       width: calc(100% - #{$sidebar-left-width});
     }
@@ -24,7 +24,7 @@
     position: fixed;
     top: $topbar-height;
     height: calc(100vh - #{$topbar-height});
-    background: $background;
+    background: #dddd;
     box-shadow: 0 4px 20px 1px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.08);
   }
   .sidebar-left {
@@ -90,15 +90,17 @@
             color: $heading;
           }
         }
-        &.active .triangle {
-          position: absolute;
-          width: 0;
-          height: 0;
-          right: 0;
-          bottom: 0;
-          border-style: solid;
-          border-width: 0 0 30px 30px;
-          border-color: transparent transparent $primary transparent;
+        &.active {
+          .triangle {
+            position: absolute;
+            width: 0;
+            height: 0;
+            right: 0;
+            bottom: 0;
+            border-style: solid;
+            border-width: 0 0 30px 30px;
+            border-color: transparent transparent $primary transparent;
+          }
         }
       }
     }
@@ -110,7 +112,7 @@
     width: $sidebar-left-secondary-width;
     padding: 0.75rem 0;
     transition: left 0.24s ease-in-out;
-    background: $background;
+    background: #ddd;
     &.open {
       left: $sidebar-left-width;
     }

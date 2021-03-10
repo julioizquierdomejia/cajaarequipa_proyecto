@@ -59,6 +59,15 @@
           <h3 class="card-title">Otras Interacciones</h3>
           <b-row>
             <b-col>
+              <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
+                <div class="card-body">
+                  <i class="i-Add-User"></i>
+                  <div class="content">
+                    <p class="text-muted mt-2 mb-0">Créditos</p>
+                    <p class="text-primary text-24 line-height-1 mb-2">50</p>
+                  </div>
+                </div>
+              </div>
               <div class="ul-widget__row-v2">
                 <div id="chart">
                   <apexchart type="donut" width="100%" :options="simpleDonutNoLegend.chartOptions" :series="simpleDonutNoLegend.series" />
@@ -70,6 +79,15 @@
               </div>
             </b-col>
             <b-col>
+              <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
+                <div class="card-body">
+                  <i class="i-Add-User"></i>
+                  <div class="content">
+                    <p class="text-muted mt-2 mb-0">Reprogramación</p>
+                    <p class="text-primary text-24 line-height-1 mb-2">68</p>
+                  </div>
+                </div>
+              </div>
               <div class="ul-widget__row-v2">
                 <div id="chart">
                   <apexchart type="donut" width="100%" :options="simpleDonutNoLegend.chartOptions" :series="simpleDonutNoLegend.series" />
@@ -81,6 +99,15 @@
               </div>
             </b-col>
             <b-col>
+              <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
+                <div class="card-body">
+                  <i class="i-Add-User"></i>
+                  <div class="content">
+                    <p class="text-muted mt-2 mb-0">Desembolso Digital</p>
+                    <p class="text-primary text-24 line-height-1 mb-2">20</p>
+                  </div>
+                </div>
+              </div>
               <div class="ul-widget__row-v2">
                 <div id="chart">
                   <apexchart type="donut" width="100%" :options="simpleDonutNoLegend.chartOptions" :series="simpleDonutNoLegend.series" />
@@ -92,6 +119,15 @@
               </div>
             </b-col>
             <b-col>
+              <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
+                <div class="card-body">
+                  <i class="i-Add-User"></i>
+                  <div class="content">
+                    <p class="text-muted mt-2 mb-0">Caja Móvil</p>
+                    <p class="text-primary text-24 line-height-1 mb-2">40</p>
+                  </div>
+                </div>
+              </div>
               <div class="ul-widget__row-v2">
                 <div id="chart">
                   <apexchart type="donut" width="100%" :options="simpleDonutNoLegend.chartOptions" :series="simpleDonutNoLegend.series" />
@@ -103,6 +139,15 @@
               </div>
             </b-col>
             <b-col>
+              <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
+                <div class="card-body">
+                  <i class="i-Add-User"></i>
+                  <div class="content">
+                    <p class="text-muted mt-2 mb-0">Canales de Atención</p>
+                    <p class="text-primary text-24 line-height-1 mb-2">4</p>
+                  </div>
+                </div>
+              </div>
               <div class="ul-widget__row-v2">
                 <div id="chart">
                   <apexchart type="donut" width="100%" :options="simpleDonutNoLegend.chartOptions" :series="simpleDonutNoLegend.series" />
@@ -120,11 +165,11 @@
   </div>
 </template>
 <script>
-import { multipleYxis, basicColumnChart } from '@/data/apexChart';
-import { simplePie, simpleDonut, monochromePie, gradientDonut, donutwithPattern } from '@/data/apexChart.js';
+import { multipleYxis, basicColumnChart } from '@/data/apexChart'
+import { simplePie, simpleDonut, monochromePie, gradientDonut, donutwithPattern } from '@/data/apexChart.js'
 
-import { echart1, echart3, echart2, echart4 } from '@/data/dashboard3';
-import { widgetBarChartThree, widgetBarChartFour, widgetBarChartFive, widgetBarChartSix } from '@/data/widgetStatistics';
+import { echart1, echart3, echart2, echart4 } from '@/data/dashboard3'
+import { widgetBarChartThree, widgetBarChartFour, widgetBarChartFive, widgetBarChartSix } from '@/data/widgetStatistics'
 export default {
   metaInfo: {
     // if no subcomponents specify a metaInfo.title, this title will be used
@@ -194,7 +239,7 @@ export default {
       }
     }
   })
-};
+}
 </script>
 
 <style lang="scss" scoped>

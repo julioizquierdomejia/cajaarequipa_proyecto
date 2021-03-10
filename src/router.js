@@ -1,11 +1,11 @@
-import Vue from 'vue';
-import store from './store';
+import Vue from 'vue'
+import store from './store'
 // import {isMobile} from "mobile-device-detect";
-import Router from 'vue-router';
-import NProgress from 'nprogress';
-import authenticate from './auth/authenticate';
+import Router from 'vue-router'
+import NProgress from 'nprogress'
+import authenticate from './auth/authenticate'
 
-Vue.use(Router);
+Vue.use(Router)
 
 // create new router
 
@@ -19,8 +19,33 @@ const routes = [
     children: [
       {
         path: '/app/dashboard',
-        component: () => import('./views/app/dashboard'), //dashboard
-        name: 'dashboard'
+        component: () => import('./views/app/dashboard'),
+        name: 'nps'
+      },
+      {
+        path: '/app/resultados-satisfatorios',
+        component: () => import('./views/app/dashboard/satisfaction'),
+        name: 'satisfaction'
+      },
+      {
+        path: '/app/resultados-region',
+        component: () => import('./views/app/dashboard/region'),
+        name: 'region'
+      },
+      {
+        path: '/app/resultados-zonas',
+        component: () => import('./views/app/dashboard/zones'),
+        name: 'zones'
+      },
+      {
+        path: '/app/resultados-agencia',
+        component: () => import('./views/app/dashboard/agency'),
+        name: 'agency'
+      },
+      {
+        path: '/app/resultados-genero',
+        component: () => import('./views/app/dashboard/gender'),
+        name: 'gender'
       },
 
       //ui-kits
@@ -511,55 +536,55 @@ const routes = [
     path: '*',
     component: () => import('./views/app/pages/notFound')
   }
-];
+]
 
 const router = new Router({
   mode: 'history',
   linkActiveClass: 'open',
   routes,
   scrollBehavior(to, from, savedPosition) {
-    return { x: 0, y: 0 };
+    return { x: 0, y: 0 }
   }
-});
+})
 
 router.beforeEach((to, from, next) => {
   // If this isn't an initial page load.
   if (to.path) {
     // Start the route progress bar.
 
-    NProgress.start();
-    NProgress.set(0.1);
+    NProgress.start()
+    NProgress.set(0.1)
   }
-  next();
-});
+  next()
+})
 
 router.afterEach(() => {
   // Remove initial loading
-  const gullPreLoading = document.getElementById('loading_wrap');
+  const gullPreLoading = document.getElementById('loading_wrap')
   if (gullPreLoading) {
-    gullPreLoading.style.display = 'none';
+    gullPreLoading.style.display = 'none'
   }
   // Complete the animation of the route progress bar.
-  setTimeout(() => NProgress.done(), 500);
+  setTimeout(() => NProgress.done(), 500)
   // NProgress.done();
   // if (isMobile) {
   if (window.innerWidth <= 1200) {
     // console.log("mobile");
-    store.dispatch('changeSidebarProperties');
+    store.dispatch('changeSidebarProperties')
     if (store.getters.getSideBarToggleProperties.isSecondarySideNavOpen) {
-      store.dispatch('changeSecondarySidebarProperties');
+      store.dispatch('changeSecondarySidebarProperties')
     }
 
     if (store.getters.getCompactSideBarToggleProperties.isSideNavOpen) {
-      store.dispatch('changeCompactSidebarProperties');
+      store.dispatch('changeCompactSidebarProperties')
     }
   } else {
     if (store.getters.getSideBarToggleProperties.isSecondarySideNavOpen) {
-      store.dispatch('changeSecondarySidebarProperties');
+      store.dispatch('changeSecondarySidebarProperties')
     }
 
     // store.state.sidebarToggleProperties.isSecondarySideNavOpen = false;
   }
-});
+})
 
-export default router;
+export default router

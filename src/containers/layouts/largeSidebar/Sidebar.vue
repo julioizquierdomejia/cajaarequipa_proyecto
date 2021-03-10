@@ -15,7 +15,7 @@
             data-item="filters"
             :data-submenu="true"
           >
-            <a class="nav-item-hold" href="#">
+            <a class="nav-item-hold filters" href="#">
               <i class="fal fa-filter fa-2x"></i>
               <span class="nav-text">Filtros</span>
             </a>
@@ -24,49 +24,14 @@
           <li
             @mouseenter="toggleSubMenu"
             class="nav-item"
-            data-item="dashboards"
-            :class="{ active: selectedParentMenu == 'dashboards' || $route.name == 'dashboard' }"
-            :data-submenu="false"
+            :class="{ active: selectedParentMenu == 'modules' || $route.name == 'dashboard' }"
+            data-item="modules"
+            :data-submenu="true"
           >
-            <router-link tag="a" class="nav-item-hold" :to="{ name: 'dashboard' }">
-              <i class="fal fa-chart-pie fa-2x"></i>
-              <span class="nav-text">Resultados NPS</span>
-            </router-link>
-            <div class="triangle"></div>
-          </li>
-          <li @mouseenter="toggleSubMenu" class="nav-item" data-item="dashboards" :data-submenu="false">
-            <router-link tag="a" class="nav-item-hold" :to="{ name: 'dashboard' }">
-              <i class="fal fa-chart-line fa-2x"></i>
-              <span class="nav-text">Resultados Satisfacción</span>
-            </router-link>
-            <div class="triangle"></div>
-          </li>
-          <li @mouseenter="toggleSubMenu" class="nav-item" data-item="dashboards" :data-submenu="false">
-            <router-link tag="a" class="nav-item-hold" :to="{ name: 'dashboard' }">
-              <i class="fal fa-chart-network fa-2x"></i>
-              <span class="nav-text">Resultados por Región</span>
-            </router-link>
-            <div class="triangle"></div>
-          </li>
-          <li @mouseenter="toggleSubMenu" class="nav-item" data-item="dashboards" :data-submenu="false">
-            <router-link tag="a" class="nav-item-hold" :to="{ name: 'dashboard' }">
-              <i class="fal fa-map-marked-alt fa-2x"></i>
-              <span class="nav-text">Resultados por Zonas</span>
-            </router-link>
-            <div class="triangle"></div>
-          </li>
-          <li @mouseenter="toggleSubMenu" class="nav-item" data-item="dashboards" :data-submenu="false">
-            <router-link tag="a" class="nav-item-hold" :to="{ name: 'dashboard' }">
-              <i class="fal fa-folder-tree fa-2x"></i>
-              <span class="nav-text">Resultados por Agencia</span>
-            </router-link>
-            <div class="triangle"></div>
-          </li>
-          <li @mouseenter="toggleSubMenu" class="nav-item" data-item="dashboards" :data-submenu="false">
-            <router-link tag="a" class="nav-item-hold" :to="{ name: 'dashboard' }">
-              <i class="fal fa-user-friends fa-2x"></i>
-              <span class="nav-text">Resultados por Género</span>
-            </router-link>
+            <b-link class="nav-item-hold" :to="{ name: 'dashboard' }">
+              <i class="nav-icon i-Library"></i>
+              <span class="nav-text">Modulos</span>
+            </b-link>
             <div class="triangle"></div>
           </li>
         </ul>
@@ -110,6 +75,44 @@
             <b-button variant="success" block>Exportar Datos</b-button>
           </div>
         </div>
+        <ul class="childNav d-none" data-parent="modules" :class="{ 'd-block': selectedParentMenu == 'modules' }">
+          <li class="nav-item">
+            <router-link tag="a" class="nav-item-hold" :to="{ name: 'nps' }">
+              <i class="fal fa-chart-pie fa-lg mr-3"></i>
+              <span class="nav-text">Resultados NPS</span>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link tag="a" class="nav-item-hold" :to="{ name: 'satisfaction' }">
+              <i class="fal fa-chart-line fa-lg mr-3"></i>
+              <span class="nav-text">Resultados Satisfacción</span>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link tag="a" class="nav-item-hold" :to="{ name: 'region' }">
+              <i class="fal fa-chart-network fa-lg mr-3"></i>
+              <span class="nav-text">Resultados por Región</span>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link tag="a" class="nav-item-hold" :to="{ name: 'zones' }">
+              <i class="fal fa-map-marked-alt fa-lg mr-3"></i>
+              <span class="nav-text">Resultados por Zonas</span>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link tag="a" class="nav-item-hold" :to="{ name: 'agency' }">
+              <i class="fal fa-folder-tree fa-lg mr-3"></i>
+              <span class="nav-text">Resultados por Agencia</span>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link tag="a" class="nav-item-hold" :to="{ name: 'gender' }">
+              <i class="fal fa-user-friends fa-lg mr-3"></i>
+              <span class="nav-text">Resultados por Género</span>
+            </router-link>
+          </li>
+        </ul>
       </div>
     </vue-perfect-scrollbar>
     <div @click="removeOverlay()" class="sidebar-overlay" :class="{ open: getSideBarToggleProperties.isSecondarySideNavOpen }"></div>
@@ -118,10 +121,10 @@
 </template>
 
 <script>
-import Topnav from './TopNav';
-import { isMobile } from 'mobile-device-detect';
+import Topnav from './TopNav'
+import { isMobile } from 'mobile-device-detect'
 
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
@@ -135,18 +138,18 @@ export default {
       isStyle: true,
       selectedParentMenu: '',
       isMobile
-    };
+    }
   },
   mounted() {
-    this.toggleSelectedParentMenu();
-    window.addEventListener('resize', this.handleWindowResize);
-    document.addEventListener('click', this.returnSelectedParentMenu);
-    this.handleWindowResize();
+    this.toggleSelectedParentMenu()
+    window.addEventListener('resize', this.handleWindowResize)
+    document.addEventListener('click', this.returnSelectedParentMenu)
+    this.handleWindowResize()
   },
 
   beforeDestroy() {
-    document.removeEventListener('click', this.returnSelectedParentMenu);
-    window.removeEventListener('resize', this.handleWindowResize);
+    document.removeEventListener('click', this.returnSelectedParentMenu)
+    window.removeEventListener('resize', this.handleWindowResize)
   },
   computed: {
     ...mapGetters(['getSideBarToggleProperties'])
@@ -164,63 +167,63 @@ export default {
       //  console.log('not working is Mobile');
       if (window.innerWidth <= 1200) {
         if (this.getSideBarToggleProperties.isSideNavOpen) {
-          this.changeSidebarProperties();
+          this.changeSidebarProperties()
         }
         if (this.getSideBarToggleProperties.isSecondarySideNavOpen) {
-          this.changeSecondarySidebarProperties();
+          this.changeSecondarySidebarProperties()
         }
       } else {
         if (!this.getSideBarToggleProperties.isSideNavOpen) {
-          this.changeSidebarProperties();
+          this.changeSidebarProperties()
         }
       }
     },
     toggleSelectedParentMenu() {
-      const currentParentUrl = this.$route.path.split('/').filter((x) => x !== '')[1];
+      const currentParentUrl = this.$route.path.split('/').filter(x => x !== '')[1]
 
       if (currentParentUrl !== undefined || currentParentUrl !== null) {
-        this.selectedParentMenu = currentParentUrl.toLowerCase();
+        this.selectedParentMenu = currentParentUrl.toLowerCase()
       } else {
-        this.selectedParentMenu = 'dashboards';
+        this.selectedParentMenu = 'dashboards'
       }
     },
     toggleSubMenu(e) {
-      let hasSubmenu = e.target.dataset.submenu;
-      let parent = e.target.dataset.item;
+      let hasSubmenu = e.target.dataset.submenu
+      let parent = e.target.dataset.item
       if (hasSubmenu) {
-        this.selectedParentMenu = parent;
+        this.selectedParentMenu = parent
 
-        this.changeSecondarySidebarPropertiesViaMenuItem(true);
+        this.changeSecondarySidebarPropertiesViaMenuItem(true)
       } else {
-        this.selectedParentMenu = parent;
-        this.changeSecondarySidebarPropertiesViaMenuItem(false);
+        this.selectedParentMenu = parent
+        this.changeSecondarySidebarPropertiesViaMenuItem(false)
       }
     },
 
     removeOverlay() {
-      this.changeSecondarySidebarPropertiesViaOverlay();
+      this.changeSecondarySidebarPropertiesViaOverlay()
       if (window.innerWidth <= 1200) {
-        this.changeSidebarProperties();
+        this.changeSidebarProperties()
       }
-      this.toggleSelectedParentMenu();
+      this.toggleSelectedParentMenu()
     },
     returnSelectedParentMenu() {
       if (!this.isMenuOver) {
-        this.toggleSelectedParentMenu();
+        this.toggleSelectedParentMenu()
       }
     },
 
     toggleSidebarDropdwon(event) {
-      let dropdownMenus = this.$el.querySelectorAll('.dropdown-sidemenu.open');
+      let dropdownMenus = this.$el.querySelectorAll('.dropdown-sidemenu.open')
 
-      event.currentTarget.classList.toggle('open');
+      event.currentTarget.classList.toggle('open')
 
-      dropdownMenus.forEach((dropdown) => {
-        dropdown.classList.remove('open');
-      });
+      dropdownMenus.forEach(dropdown => {
+        dropdown.classList.remove('open')
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="" scoped>
