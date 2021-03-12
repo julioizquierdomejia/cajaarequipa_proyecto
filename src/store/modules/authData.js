@@ -1,5 +1,5 @@
-import axios from 'axios';
-axios.defaults.baseURL = 'https://gohan-upjhfp6ytq-ue.a.run.app';
+import axios from 'axios'
+axios.defaults.baseURL = 'https://gohan-upjhfp6ytq-ue.a.run.app'
 
 export default {
   state: {
@@ -13,68 +13,68 @@ export default {
   },
   mutations: {
     setUser(state, data) {
-      state.loggedInUser = data;
-      state.loading = false;
-      state.error = null;
+      state.loggedInUser = data
+      state.loading = false
+      state.error = null
     },
     setLogout(state) {
-      state.loggedInUser = null;
-      state.loading = false;
-      state.error = null;
+      state.loggedInUser = null
+      state.loading = false
+      state.error = null
     },
     setLoading(state, data) {
-      state.loading = data;
-      state.error = null;
+      state.loading = data
+      state.error = null
     }
   },
   actions: {
     async login({ commit }, data) {
       return new Promise((resolve, reject) => {
-        commit('setLoading', true);
+        commit('setLoading', true)
 
         axios
           .post('/api/login', data)
           .then(res => {
-            const token = res.data.result.token;
-            localStorage.setItem('userToken', token);
-            resolve(res);
+            const token = res.data.result.token
+            localStorage.setItem('userToken', token)
+            resolve(res)
           })
           .catch(error => {
-            const errorData = error.response;
-            reject(errorData);
+            const errorData = error.response
+            reject(errorData)
           })
           .finally(() => {
-            commit('setLoading', false);
-          });
-      });
+            commit('setLoading', false)
+          })
+      })
     },
 
     async signUserUp({ commit }, data) {
       return new Promise((resolve, reject) => {
-        commit('setLoading', true);
+        commit('setLoading', true)
 
         axios
           .post('/api/register', data)
           .then(res => {
-            const newUser = res.data.result.user;
-            commit('setUser', newUser);
+            const newUser = res.data.result.user
+            commit('setUser', newUser)
 
-            const token = res.data.result.token;
-            localStorage.setItem('userToken', token);
+            const token = res.data.result.token
+            localStorage.setItem('userToken', token)
 
-            resolve(res);
+            resolve(res)
           })
           .catch(error => {
-            const errorData = error.response;
-            reject(errorData);
+            const errorData = error.response
+            reject(errorData)
           })
           .finally(() => {
-            commit('setLoading', false);
-          });
-      });
+            commit('setLoading', false)
+          })
+      })
     },
     signOut({ commit }) {
-      commit('setLogout');
+      commit('setLogout')
     }
   }
-};
+}

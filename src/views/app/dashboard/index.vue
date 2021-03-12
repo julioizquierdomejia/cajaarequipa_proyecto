@@ -7,16 +7,16 @@
           <b-row no-gutters>
             <b-col cols="5" class="text-center">
               <p class="display-1 text-muted mb-0">NPS</p>
-              <p class="display-3 text-muted mb-0">60%</p>
+              <p class="display-3 text-muted mb-0">{{ Math.round(totalInsights.percent * 100) }}%</p>
               <hr class="my-3" />
               <p class="h5 text-muted mb-3">Caja Arequipa</p>
               <b-form-group label="Base:" label-for="base" class="form-group-mini" label-class="mr-2 mb-0">
-                <b-form-input id="base" type="text" v-model.number="baseValue" />
+                <b-form-input id="base" type="text" v-model.number="totalInsights.base" />
               </b-form-group>
             </b-col>
             <b-col cols="7">
               <div id="chart">
-                <apexchart type="donut" width="100%" :options="simpleDonut.chartOptions" :series="simpleDonut.series" />
+                <apexchart type="donut" width="100%" :options="chartOptions()" :series="parseSeries(totalInsights.summary)" />
               </div>
             </b-col>
           </b-row>
@@ -28,10 +28,10 @@
             <b-card class="mb-30">
               <div class="ul-widget__row-v2">
                 <div id="chart">
-                  <apexchart type="donut" width="100%" :options="simpleDonutNoLegend.chartOptions" :series="simpleDonutNoLegend.series" />
+                  <apexchart type="donut" width="100%" :options="chartOptions(false)" :series="parseSeries(totalInsights.total.categories.APE)" />
                 </div>
                 <div class="ul-widget__content-v2">
-                  <h3 class="h1 text-muted heading mt-3 mb-0">58%</h3>
+                  <h3 class="h1 text-muted heading mt-3 mb-0">{{ Math.round(totalInsights.total.nps_apertura * 100) }}%</h3>
                   <p class="text-muted m-0">Apertura</p>
                 </div>
               </div>
@@ -41,10 +41,10 @@
             <b-card class="mb-30">
               <div class="ul-widget__row-v2">
                 <div id="chart">
-                  <apexchart type="donut" width="100%" :options="simpleDonutNoLegend.chartOptions" :series="simpleDonutNoLegend.series" />
+                  <apexchart type="donut" width="100%" :options="chartOptions(false)" :series="parseSeries(totalInsights.total.categories.OPE)" />
                 </div>
                 <div class="ul-widget__content-v2">
-                  <h3 class="h1 text-muted heading mt-3 mb-0">40%</h3>
+                  <h3 class="h1 text-muted heading mt-3 mb-0">{{ Math.round(totalInsights.total.nps_operaciones * 100) }}%</h3>
                   <p class="text-muted m-0">Operaciones</p>
                 </div>
               </div>
@@ -58,106 +58,28 @@
         <b-card class="mb-30">
           <h3 class="card-title">Otras Interacciones</h3>
           <b-row>
-            <b-col>
-              <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
-                <div class="card-body">
-                  <i class="i-Add-User"></i>
-                  <div class="content">
-                    <p class="text-muted mt-2 mb-0">Créditos</p>
-                    <p class="text-primary text-24 line-height-1 mb-2">50</p>
+            <template v-for="insight in othersInsights">
+              <b-col :key="`Insight ${insight.name}`">
+                <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
+                  <div class="card-body">
+                    <i class="i-Add-User"></i>
+                    <div class="content">
+                      <p class="text-muted mt-2 mb-0">{{ insight.name }}</p>
+                      <p class="text-primary text-24 line-height-1 mb-2">{{ insight.base }}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="ul-widget__row-v2">
-                <div id="chart">
-                  <apexchart type="donut" width="100%" :options="simpleDonutNoLegend.chartOptions" :series="simpleDonutNoLegend.series" />
-                </div>
-                <div class="ul-widget__content-v2">
-                  <h3 class="h1 text-muted heading mt-3 mb-0">50%</h3>
-                  <p class="text-muted m-0">Créditos</p>
-                </div>
-              </div>
-            </b-col>
-            <b-col>
-              <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
-                <div class="card-body">
-                  <i class="i-Add-User"></i>
-                  <div class="content">
-                    <p class="text-muted mt-2 mb-0">Reprogramación</p>
-                    <p class="text-primary text-24 line-height-1 mb-2">68</p>
+                <div class="ul-widget__row-v2">
+                  <div id="chart">
+                    <apexchart type="donut" width="100%" :options="chartOptions(false)" :series="parseSeries(insight.summary)" />
+                  </div>
+                  <div class="ul-widget__content-v2">
+                    <h3 class="h1 text-muted heading mt-3 mb-0">{{ Math.round(insight.percent * 100) }}%</h3>
+                    <p class="text-muted m-0">{{ insight.name }}</p>
                   </div>
                 </div>
-              </div>
-              <div class="ul-widget__row-v2">
-                <div id="chart">
-                  <apexchart type="donut" width="100%" :options="simpleDonutNoLegend.chartOptions" :series="simpleDonutNoLegend.series" />
-                </div>
-                <div class="ul-widget__content-v2">
-                  <h3 class="h1 text-muted heading mt-3 mb-0">45%</h3>
-                  <p class="text-muted m-0">Reprogramación</p>
-                </div>
-              </div>
-            </b-col>
-            <b-col>
-              <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
-                <div class="card-body">
-                  <i class="i-Add-User"></i>
-                  <div class="content">
-                    <p class="text-muted mt-2 mb-0">Desembolso Digital</p>
-                    <p class="text-primary text-24 line-height-1 mb-2">20</p>
-                  </div>
-                </div>
-              </div>
-              <div class="ul-widget__row-v2">
-                <div id="chart">
-                  <apexchart type="donut" width="100%" :options="simpleDonutNoLegend.chartOptions" :series="simpleDonutNoLegend.series" />
-                </div>
-                <div class="ul-widget__content-v2">
-                  <h3 class="h1 text-muted heading mt-3 mb-0">58%</h3>
-                  <p class="text-muted m-0">Desembolso Digital</p>
-                </div>
-              </div>
-            </b-col>
-            <b-col>
-              <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
-                <div class="card-body">
-                  <i class="i-Add-User"></i>
-                  <div class="content">
-                    <p class="text-muted mt-2 mb-0">Caja Móvil</p>
-                    <p class="text-primary text-24 line-height-1 mb-2">40</p>
-                  </div>
-                </div>
-              </div>
-              <div class="ul-widget__row-v2">
-                <div id="chart">
-                  <apexchart type="donut" width="100%" :options="simpleDonutNoLegend.chartOptions" :series="simpleDonutNoLegend.series" />
-                </div>
-                <div class="ul-widget__content-v2">
-                  <h3 class="h1 text-muted heading mt-3 mb-0">40%</h3>
-                  <p class="text-muted m-0">Caja Móvil</p>
-                </div>
-              </div>
-            </b-col>
-            <b-col>
-              <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-30 text-center">
-                <div class="card-body">
-                  <i class="i-Add-User"></i>
-                  <div class="content">
-                    <p class="text-muted mt-2 mb-0">Canales de Atención</p>
-                    <p class="text-primary text-24 line-height-1 mb-2">4</p>
-                  </div>
-                </div>
-              </div>
-              <div class="ul-widget__row-v2">
-                <div id="chart">
-                  <apexchart type="donut" width="100%" :options="simpleDonutNoLegend.chartOptions" :series="simpleDonutNoLegend.series" />
-                </div>
-                <div class="ul-widget__content-v2">
-                  <h3 class="h1 text-muted heading mt-3 mb-0">40%</h3>
-                  <p class="text-muted m-0">Canales de Atención</p>
-                </div>
-              </div>
-            </b-col>
+              </b-col>
+            </template>
           </b-row>
         </b-card>
       </b-col>
@@ -165,31 +87,14 @@
   </div>
 </template>
 <script>
-import { multipleYxis, basicColumnChart } from '@/data/apexChart'
-import { simplePie, simpleDonut, monochromePie, gradientDonut, donutwithPattern } from '@/data/apexChart.js'
+import { mapGetters, mapActions } from 'vuex'
 
-import { echart1, echart3, echart2, echart4 } from '@/data/dashboard3'
-import { widgetBarChartThree, widgetBarChartFour, widgetBarChartFive, widgetBarChartSix } from '@/data/widgetStatistics'
 export default {
   metaInfo: {
-    // if no subcomponents specify a metaInfo.title, this title will be used
-    title: 'Dashboard v3'
+    title: 'Total Operaciones'
   },
   data: () => ({
-    selected: 'x',
-    echart1,
-    echart2,
-    echart3,
-    echart4,
-    widgetBarChartThree,
-    widgetBarChartFour,
-    widgetBarChartFive,
-    widgetBarChartSix,
-    basicColumnChart,
-    baseValue: 2.499,
     simpleDonut: {
-      series: [42.5, 42.5, 15],
-
       chartOptions: {
         legend: {
           position: 'bottom'
@@ -215,8 +120,6 @@ export default {
       }
     },
     simpleDonutNoLegend: {
-      series: [42.5, 42.5, 15],
-
       chartOptions: {
         legend: {
           show: false
@@ -238,7 +141,47 @@ export default {
         ]
       }
     }
-  })
+  }),
+  created() {
+    this.fetchOthersInsights()
+    this.fetchTotalInsights()
+  },
+  computed: {
+    ...mapGetters(['othersInsights', 'totalInsights'])
+  },
+  methods: {
+    ...mapActions(['fetchOthersInsights', 'fetchTotalInsights']),
+    parseSeries(data) {
+      const series = data.map(item => {
+        return Math.round(item.percent * 100)
+      })
+      return series
+    },
+    chartOptions(label) {
+      const options = {
+        legend: {
+          show: label === false ? false : true,
+          position: 'bottom'
+        },
+        colors: ['#FE9B00', '#548237', '#BD0201'],
+        labels: ['Promotores', 'Neutros', 'Detractores'],
+        dataLabels: {
+          enabled: false
+        },
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              }
+            }
+          }
+        ]
+      }
+      return options
+    }
+  }
 }
 </script>
 
